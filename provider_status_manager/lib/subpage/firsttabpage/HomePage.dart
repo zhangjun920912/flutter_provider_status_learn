@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider_status_manager/subpage/firsttabpage/ShareDataWidgetPage.dart';
+import 'package:provider_status_manager/subpage/fourthtabpage/ProfilePage.dart';
 import 'dart:async';
 
 import 'ProductDetailPage.dart';
@@ -69,19 +71,29 @@ class HomePageDisplayPageState extends State<HomePageDisplayPage> {
               textAlign: TextAlign.center,
             ),
             new RaisedButton(child: Text('加载网页'), onPressed: _loadWebView),
+            new RaisedButton(child: Text('共享数据InheritedWidget使用'), onPressed: shareDateWithInheritedWidget),
           ],
         ));
   }
 
+  ///使用InheritedWidget实现数据共享
+  void shareDateWithInheritedWidget() {
+    Navigator.push(context, new MaterialPageRoute(
+        builder: (context) => new ShareDataWidgetPage()));
+  }
+
+  ///调用Native的方式弹出Toast
   Future<Null> _getToast() async {
     Map<String, String> map = {"flutter": "这是一个来自flutter调用Native端的Toast"};
     await platform2.invokeMethod('getNativeToast', map);
   }
 
+  ///获取电量
   void _getBattery() {
     _getBatteryLevel();
   }
 
+  ///加载网页
   void _loadWebView() {
     Navigator.push(
       context,
