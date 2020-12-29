@@ -54,7 +54,7 @@ class _TestWidgetState extends State<_TestWidget> {
     //使用InheritedWidget中的共享数据
     return Container(
       color: Colors.blue,
-      child: Text("shina"),
+      child: Text(ShareDataWidget.of(context).data.toString()),
     );
   }
 
