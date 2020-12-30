@@ -5,6 +5,7 @@ import 'package:provider_status_manager/subpage/fourthtabpage/ProfilePage.dart';
 import 'dart:async';
 
 import 'ProductDetailPage.dart';
+import 'ProviderUsePage.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage();
@@ -72,8 +73,15 @@ class HomePageDisplayPageState extends State<HomePageDisplayPage> {
             ),
             new RaisedButton(child: Text('加载网页'), onPressed: _loadWebView),
             new RaisedButton(child: Text('共享数据InheritedWidget使用'), onPressed: shareDateWithInheritedWidget),
+            new RaisedButton(child: Text('Provider的使用'), onPressed: openProviderPage),
           ],
         ));
+  }
+
+  ///打开使用provider的界面
+  void openProviderPage() {
+    Navigator.push(context, new MaterialPageRoute(
+        builder: (context) => new ProviderUsePage()));
   }
 
   ///使用InheritedWidget实现数据共享
